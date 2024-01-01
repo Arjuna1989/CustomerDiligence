@@ -1,0 +1,80 @@
+﻿
+@Scripts.Render("~/scripts/vendor")
+
+
+<!-- CommercePromote handlar -->
+<script src="~/scripts/commercepromote/diligence.handlar.js"></script>
+<!-- CommercePromote base service -->
+<script src="~/scripts/commercepromote/base.service.js"></script>
+<!-- CommercePromote date format directive -->
+<script src="~/Scripts/commercepromote/directives/diligent.directive.dateformat.js"></script>
+<!-- CommercePromote hrm service -->
+<script src="~/scripts/commercepromote/services/diligence.services.js"></script>
+<!-- CommercePromote hrm controller -->
+<script src="~/Scripts/commercepromote/controllers/diligent.creatediligence.controller.js"></script>
+<!-- CommercePromote edit dilegence controller -->
+<script src="~/Scripts/commercepromote/controllers/diligent.editdiligence.controller.js"></script>
+<!-- CommercePromote sync controller -->
+<script src="~/scripts/commercepromote/controllers/diligent.diligence.controller.js"></script>
+<!-- CommercePromote sign controller -->
+<script src="~/scripts/commercepromote/controllers/diligent.sign.controller.js"></script>
+<!-- CommercePromote CDD list controller -->
+<script src="~/Scripts/commercepromote/controllers/diligent.cddlist.controller.js"></script>
+<!-- CommercePromote Edit Annex controller -->
+<script src="~/Scripts/commercepromote/controllers/diligent.editannex.controller.js"></script>
+<!-- CommercePromote Sign Annex controller -->
+<script src="~/Scripts/commercepromote/controllers/diligent.annexsign.controller.js"></script>
+<!-- Chat UI : plugin -->
+@Scripts.Render("~/scripts/vendor-chat")
+
+<!-- DataTables : plugin -->
+@Scripts.Render("~/scripts/datatables")
+
+<!-- jQGrid : plugin -->
+@Scripts.Render("~/scripts/jq-grid")
+
+<!-- Forms : plugin -->
+@Scripts.Render("~/scripts/forms")
+
+<!-- Flot Chart Plugin: Flot Engine, Flot Resizer, Flot Tooltip, Morris, Sparkline, EasyPie -->
+@Scripts.Render("~/scripts/charts")
+
+<!-- Vector Maps Plugin: Vectormap engine, Vectormap language -->
+@Scripts.Render("~/scripts/vector-map")
+
+<!-- Full Calendar -->
+@Scripts.Render("~/scripts/full-calendar")
+
+<!-- Init Angular resources -->
+<script>
+    var handler = new DiligenceWebClient.DiligenceWebClientHandler('@ViewBag.LoggedUser.Token');
+</script>
+
+<!-- DO NOT REMOVE : GLOBAL FUNCTIONS! -->
+<script>
+    $(document).ready(function () {
+        pageSetUp();
+        drawBreadCrumb();
+    });
+</script>
+
+@if (@Model is HelperResult)
+{
+    @Model
+}
+<!-- Your GOOGLE ANALYTICS CODE Below-->
+@*<script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'xx-xxxxxxxx-x']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>*@
+

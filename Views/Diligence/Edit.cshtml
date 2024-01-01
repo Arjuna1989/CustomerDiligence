@@ -1,0 +1,1077 @@
+﻿
+@{
+    ViewBag.Title = "Customer Diligence";
+}
+
+<div id="content" ng-controller="EditDiligenceController" ng-init="Init('@ViewBag.LoggedUser.AgentId' ,'@ViewBag.Id')">
+    <div id="loader" class="preloader-area">
+        <div class="spinner-gears"></div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+            <h1 class="page-title txt-color-blueDark">
+                <i class="fa fa-table fa-fw "></i>
+                Customer due diligence
+            </h1>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
+        <a ng-href="@Url.Content("~/Diligence/List")" class="btn btn-info pull-left header-btn margin-right-5 m-b-10 m-t-10" data-dismiss="modal"> <i class="fa fa-arrow-circle-left"></i></a>
+    </div>
+
+    <section id="widget-grid-0" class="">
+        <!-- row -->
+        <div class="row">
+            <!-- NEW WIDGET START -->
+            <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <!-- Widget ID (each widget will need unique ID)-->
+                <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-0" style="border-top: 1px solid #ddd;"
+                     data-widget-colorbutton="false"
+                     data-widget-editbutton="false">
+                    <div>
+                        <div class="widget-body">
+                            <form name="" class="form-horizontal" validate>
+                                <div ng-repeat="customer in CustomerCollection">
+                                    <fieldset class="m-t-10" ng-show="customer.IsIndividual">
+                                        <legend>Customer's Particulars<i> for individual</i></legend>
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label">Name </label>
+                                            <div class="col-md-10">
+                                                <label class="form-control"> {{customer.Name}}</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label">NRIC/Passport No </label>
+                                            <div class="col-md-10">
+                                                <label class="form-control">{{customer.IdNumber}}</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label">Date of Birth </label>
+                                            <div class="col-md-10">
+                                                <label class="form-control">{{customer.Birthday | date : 'dd/MMM/yyyy'}}</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label">Nationality </label>
+                                            <div class="col-md-10">
+                                                <label class="form-control">{{customer.Nationality}}</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label">Occupation</label>
+                                            <div class="col-md-10">
+                                                <label class="form-control">{{customer.Occupation}}</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label">
+                                                Name of beneficial owner  <br />
+                                                <small style="font-weight:normal;color:#aaa;">(if individual is not the true owner)</small>
+                                            </label>
+
+                                            <div class="col-md-10">
+                                                <label class="form-control">{{customer.Owner}}</label>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+
+                                    <fieldset ng-show="!customer.IsIndividual">
+                                        <legend>Customer's Particulars<i> for entities</i></legend>
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label">Name</label>
+                                            <div class="col-md-10">
+                                                <label class="form-control"> {{customer.Name}}</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label">Country of Reg</label>
+                                            <div class="col-md-10">
+                                                <label class="form-control">{{customer.Nationality}}</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label">Reg Number</label>
+                                            <div class="col-md-10">
+                                                <label class="form-control">{{customer.IdNumber}}</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label">Reg Date</label>
+                                            <div class="col-md-10">
+                                                <label class="form-control">{{customer.Birthday | date : 'dd/MMM/yyyy'}}</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label">Busincess Activity</label>
+                                            <div class="col-md-10">
+                                                <label class="form-control">{{customer.Occupation}}</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label">
+                                                Name of beneficial owner  <br />
+                                                <small style="font-weight:normal;color:#aaa;">(if individual is not the true owner)</small>
+                                            </label>
+
+                                            <div class="col-md-10">
+                                                <label class="form-control">{{customer.Owner}}</label>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label">Date of Completing Form </label>
+                                            <div class="col-md-10">
+                                                <label class="form-control">{{customer.Date | date : 'dd/MMM/yyyy'}}</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label">Address of Property in the Transaction</label>
+                                            <div class="col-md-10">
+                                                <label class="form-control">{{customer.PropertyAddress}}</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group" ng-show="customer.Signature!=null">
+                                            <label class="col-md-2 control-label">Signature of Customer</label>
+                                            <div class="col-md-10">
+                                                <img ng-src="{{customer.Signature}}">
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                    <hr />
+                                </div>
+
+                                <div class="form-actions">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <a href="" ng-click="ProceedCDD()" class="btn btn-success pull-right header-btn m-b-10 m-t-10"> Proceed to CDD.</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- end widget content -->
+                    </div>
+                    <!-- end widget div -->
+                </div>
+                <!-- end widget -->
+            </article>
+        </div>
+        <!-- end row -->
+
+    </section>
+
+    <section id="widget-grid" class="" ng-show="IsProceed">
+        <div class="row">
+            <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-0"
+                     data-widget-colorbutton="false"
+                     data-widget-editbutton="false">
+                    <div>
+                        <div class="widget-body">
+                            <div class="alert alert-info fade in">
+                                <button class="close" data-dismiss="alert">
+                                    ×
+                                </button>
+                                <i class="fa-fw fa fa-warning"></i>
+                                <strong>Important points to note</strong>
+                                <ul>
+                                    <li>
+                                        This checklist guides salespersons on the conduct of CDD to comply with the requirements of Practice Circular 04-15 on the Prevention of Money Laundering and Countering the Financing of Terrorism when undertaking estate agency work.
+                                    </li>
+                                    <li>
+                                        Salespersons are required to complete the checklist for the client(s) that they represent, e.g. if the salesperson represents the buyer, the salesperson is only required to complete the checklist for the buyer. Similarly, the salesperson is only required to complete the checklist for the landlord if he represents the landlord.
+                                    </li>
+                                    <li>
+                                        Salespersons are required to complete the checklist for every property transaction, and thereafter submit the completed checklists to their estate agents.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="jarviswidget" id="wid-id-2" data-widget-colorbutton="false" data-widget-editbutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                        <h2>Establihing need for customer due diigence </h2>
+
+                    </header>
+                    <div>
+                        <!-- widget edit box -->
+                        <div class="jarviswidget-editbox">
+                            <!-- This area used as dropdown edit box -->
+
+                        </div>
+                        <div class="widget-body">
+                            <form>
+
+                                <fieldset>
+                                    <div class="form-group">
+                                        <label>
+                                            Is the client a <u> foreigner</u> * purchasing a property for this property transaction?
+                                            <br />
+                                            <span class="help-block"><i class="fa fa-warning"></i> Pointer: Foreigner includes Singapore Permanent Residents.</span>
+                                        </label>
+                                        <div class="col-md-12">
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-1" ng-model="CustomerDiligent.Q21" ng-value="false">
+                                                    No
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-1" ng-model="CustomerDiligent.Q21" ng-value="true">
+                                                    Yes
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <textarea class="form-control" placeholder="Remarks (if any)" rows="2" ng-model="CustomerDiligent.Q21A"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>
+                                            Is <u>physical cash </u>* used for the property purchase in this property transaction?
+                                            <br />
+                                            <span class="help-block"><i class="fa fa-warning"></i>  Pointer: Physical cash exclude cheques and cashier orders.</span>
+                                        </label>
+                                        <div class="col-md-12">
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-2" ng-model="CustomerDiligent.Q22" ng-value="false">
+                                                    No
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-2" ng-model="CustomerDiligent.Q22" ng-value="true">
+                                                    Yes
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <textarea class="form-control" placeholder="Remarks (if any)" ng-model="CustomerDiligent.Q22A" rows="2"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>
+                                            Are there <u>doubts</u> about the client’s particulars provided to you for this property transaction?
+                                        </label>
+                                        <div class="col-md-12">
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-3" ng-model="CustomerDiligent.Q23" ng-value="false" />
+                                                    No
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-3" ng-model="CustomerDiligent.Q23" ng-value="true" />
+                                                    Yes
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <textarea class="form-control" placeholder="Remarks (if any)" ng-model="CustomerDiligent.Q23A" rows="2"></textarea>
+                                    </div>
+                                </fieldset>
+                                <fieldset>
+                                    <legend class="legend-content">Determine if there is suspicion of ML/FT activity for this property transaction by answering the list of suspicious ML/FT indicators below. </legend>
+                                    <div class="form-group">
+                                        <label>
+                                            There is adverse news concerning the client in the media or newspapers.
+                                        </label>
+                                        <div class="col-md-12">
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-4" ng-model="CustomerDiligent.Q24A" ng-value="false">
+                                                    No
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-4" ng-model="CustomerDiligent.Q24A" ng-value="true">
+                                                    Yes
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <textarea class="form-control" placeholder="Remarks (if any)" ng-model="CustomerDiligent.Q24AA" rows="2"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>
+                                            Client appears hesitant or declines to put his/her name on any document that would connect him/her with the property.
+                                        </label>
+                                        <div class="col-md-12">
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-5" ng-model="CustomerDiligent.Q24B" ng-value="false">
+                                                    No
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-5" ng-model="CustomerDiligent.Q24B" ng-value="true">
+                                                    Yes
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <textarea class="form-control" placeholder="Remarks (if any)" rows="2" ng-model="CustomerDiligent.Q24BA"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>
+                                            Client attempts to hide the identity of the true client or requests that the transaction be structured to hide the identity of the true client.
+                                        </label>
+                                        <div class="col-md-12">
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-6" ng-model="CustomerDiligent.Q24C" ng-value="false" />
+                                                    No
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-6" ng-model="CustomerDiligent.Q24C" ng-value="true" />
+                                                    Yes
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <textarea class="form-control" placeholder="Remarks (if any)" rows="2" ng-model="CustomerDiligent.Q24CA"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>
+                                            Client pays substantial down payment in cash, and the balance is financed by an offshore bank.
+                                        </label>
+                                        <div class="col-md-12">
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-7" ng-model="CustomerDiligent.Q24D" ng-value="false" />
+                                                    No
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-7" ng-model="CustomerDiligent.Q24D" ng-value="true" />
+                                                    Yes
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <textarea class="form-control" placeholder="Remarks (if any)" rows="2" ng-model="CustomerDiligent.Q24DA"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>
+                                            Client is unconcerned about the value of the property, and is willing to pay for the property or rent it at a much higher price than the market price; or sell the property or let it out much lower than the market price.
+                                        </label>
+                                        <div class="col-md-12">
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-8" ng-model="CustomerDiligent.Q24E" ng-value="false" />
+                                                    No
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-8" ng-model="CustomerDiligent.Q24E" ng-value="true" />
+                                                    Yes
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <textarea class="form-control" placeholder="Remarks (if any)" rows="2" ng-model="CustomerDiligent.Q24EA"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>
+                                            Client is planning to purchase or rent multiple properties in a short period of time.
+                                        </label>
+                                        <div class="col-md-12">
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-9" ng-model="CustomerDiligent.Q24F" ng-value="false" />
+                                                    No
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-9" ng-model="CustomerDiligent.Q24F" ng-value="true" />
+                                                    Yes
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <textarea class="form-control" placeholder="Remarks (if any)" rows="2" ng-model="CustomerDiligent.Q24FA"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>
+                                            Client is willing to purchase or rent the property without inspecting it
+                                        </label>
+                                        <div class="col-md-12">
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-10" ng-model="CustomerDiligent.Q24G" ng-value="false" />
+                                                    No
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-10" ng-model="CustomerDiligent.Q24G" ng-value="true" />
+                                                    Yes
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <textarea class="form-control" placeholder="Remarks (if any)" rows="2" ng-model="CustomerDiligent.Q24GA"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>
+                                            Client pays rent for a long duration of lease in advance.
+                                        </label>
+                                        <div class="col-md-12">
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-11" ng-model="CustomerDiligent.Q24H" ng-value="false" />
+                                                    No
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-11" ng-model="CustomerDiligent.Q24H" ng-value="true" />
+                                                    Yes
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <textarea class="form-control" placeholder="Remarks (if any)" rows="2" ng-model="CustomerDiligent.Q24HA"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>
+                                            Client’s known business activity and purpose does not match the property transaction, e.g. the client is a non-profit organisation but the property is purchased for investment and the client intends to take a large loan.
+                                        </label>
+                                        <div class="col-md-12">
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-12" ng-model="CustomerDiligent.Q24I" ng-value="false" />
+                                                    No
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-12" ng-model="CustomerDiligent.Q24I" ng-value="true" />
+                                                    Yes
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <textarea class="form-control" placeholder="Remarks (if any)" rows="2" ng-model="CustomerDiligent.Q24IA"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>
+                                            There is other* suspicion (please specify)
+                                        </label>
+                                        <div class="col-md-12">
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-13" ng-model="CustomerDiligent.Q24J" ng-value="false" />
+                                                    No
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-13" ng-model="CustomerDiligent.Q24J" ng-value="true" />
+                                                    Yes
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <textarea class="form-control" placeholder="Remarks (if any)" rows="2" ng-model="CustomerDiligent.Q24JA"></textarea>
+                                    </div>
+                                </fieldset>
+
+                                <fieldset>
+                                    <div class="form-actions" ng-show="IsDraft && !IsSaveBasciForm">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="alert alert-success fade in pull-left" id="user-success">
+                                                    <i class="fa-fw fa fa-check"></i>
+                                                    The CDD report has been drafted successfully.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-actions" ng-show="!IsSaveBasciForm">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <a class="btn btn-success pull-right header-btn m-b-10 m-t-10" ng-click="SaveBasicForm()">
+                                                    <i class="fa fa-save"></i>
+                                                    Save
+                                                </a>
+                                                <a class="btn btn-info pull-right header-btn margin-right-5 m-b-10 m-t-10" ng-click="DraftForm()">
+                                                    <i class="fa fa-save"></i>
+                                                    Draft
+                                                </a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section id="widget-grid-1" class="" ng-show="IsEnableDetailSection">
+        <div class="row">
+            <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1"
+                     data-widget-colorbutton="false"
+                     data-widget-editbutton="false">
+                    <div>
+                        <div class="widget-body">
+                            <div class="alert alert-info fade in">
+                                <button class="close" data-dismiss="alert">
+                                    ×
+                                </button>
+                                <i class="fa-fw fa fa-warning"></i>
+                                <strong>Note: </strong>
+                                <ul>
+                                    <li>
+                                        In situations where the salesperson reasonably believes that conducting the below CDD measures would tip off the client, he/she should not pursue the CDD measures and he/she should lodge a Suspicious Transaction Report (STR)].
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="jarviswidget" id="wid-id-3" data-widget-colorbutton="false" data-widget-editbutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                        <h2>Conduct of customer due diligence measures </h2>
+
+                    </header>
+                    <div>
+                        <!-- widget edit box -->
+                        <div class="jarviswidget-editbox">
+                            <!-- This area used as dropdown edit box -->
+
+                        </div>
+                        <div class="widget-body">
+                            <form>
+                                <fieldset>
+                                    <legend class="legend-content">Beneficial Owner (BO) </legend>
+                                    <div class="form-group">
+                                        <label>
+                                            Do you suspect that the client is not the <u>BO*</u> of this property transaction?
+                                            <br />
+                                            <span class="help-block"><i class="fa fa-warning"></i>  Pointer: BO is the person who has ultimate interest in the property transaction, and who has control over the client. If the BO is a company, take reasonable measures to understand the ownership and control structure of the company to identify the individual behind the company. </span>
+                                        </label>
+                                        <div class="col-md-12">
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-Q31A" ng-model="CustomerDiligent.Q31A" ng-value="false" />
+                                                    No
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-Q31A" ng-model="CustomerDiligent.Q31A" ng-value="true" />
+                                                    Yes
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <textarea class="form-control" placeholder="Remarks (if any)" ng-model="CustomerDiligent.Q31AA" rows="2"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>
+                                            If the client is not the BO, are you able to verify the identify the BO?
+                                            <br />
+                                        </label>
+                                        <div class="col-md-12">
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-Q31B" ng-model="CustomerDiligent.Q31B" ng-value="false" />
+                                                    No
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-Q31B" ng-model="CustomerDiligent.Q31B" ng-value="true" />
+                                                    Yes
+                                                </label>
+                                            </div>
+
+                                        </div>
+                                        <textarea class="form-control" placeholder="Remarks (if any)" ng-model="CustomerDiligent.Q31BA" rows="2"></textarea>
+
+                                    </div>
+                                </fieldset>
+                                <fieldset>
+                                    <legend class="legend-content">United Nations (UN) Sanction Lists </legend>
+                                    <div class="form-group">
+                                        <label>
+                                            In the screening of the client or BO against the UN Sanction Lists, is there any full name match or partial name match where the nationality and age range matched*?
+                                        </label>
+                                        <span class="help-block"><i class="fa fa-warning"></i> Pointer: If there is a partial name match, salesperson should find out whether the nationality and age range of the client match the information provided in the UN Sanction Lists. If there is a nationality and age range match, answer “Yes” to this question.</span>
+                                        <div class="col-md-12">
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-Q32A" ng-model="CustomerDiligent.Q32A" ng-value="false" />
+                                                    No
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-Q32A" ng-model="CustomerDiligent.Q32A" ng-value="true" />
+                                                    Yes
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <textarea class="form-control" placeholder="Remarks (if any)" ng-model="CustomerDiligent.Q32AA" rows="2"></textarea>
+                                        <br />
+                                        @*<div>
+                                            <input type="button" class="btn btn-success" ng-hide="DiligenceCustomer.length==0" value="Record Found" data-toggle="modal" data-target="#customerRecord" ng-disabled="DiligenceCustomer.length==0">
+                                            </div>*@
+                                    </div>
+                                    <div class="form-group">
+                                        <label>
+
+                                        </label>
+                                        <div class="col-md-12">
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-Q32B" ng-model="CustomerDiligent.Q32B" ng-value="false" />
+                                                    No
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-Q32B" ng-model="CustomerDiligent.Q32B" ng-value="true" />
+                                                    Yes
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <textarea class="form-control" placeholder="Remarks (if any)" ng-model="CustomerDiligent.Q32BA" rows="2"></textarea>
+                                    </div>
+                                </fieldset>
+                                <fieldset>
+                                    <legend class="legend-content">Panama Papers </legend>
+                                    <div class="form-group">
+                                        <label>
+                                            Have you screened the client or BO against the list of entities identified in the Panama Papers*?
+                                        </label>
+                                        <span class="help-block"><i class="fa fa-warning"></i> Pointer: Links to the Panama Papers can be found at the International Consortium of Investigative Journalists’ (ICIJ) webpage at this web address: <a href="https://offshoreleaks.icij.org">https://offshoreleaks.icij.org</a> </span>
+                                        <div class="col-md-12">
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-Q33A" ng-model="CustomerDiligent.Q33A" ng-value="false" />
+                                                    No
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-Q33A" ng-model="CustomerDiligent.Q33A" ng-value="true" />
+                                                    Yes
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <textarea class="form-control" placeholder="Remarks (if any)" ng-model="CustomerDiligent.Q33AA" rows="2"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>
+                                            In the screening of the client or BO against the Panama Papers, is there any name match?
+                                        </label>
+                                        <div class="col-md-12">
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-Q33B" ng-model="CustomerDiligent.Q33B" ng-value="false" />
+                                                    No
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-Q33B" ng-model="CustomerDiligent.Q33B" ng-value="true" />
+                                                    Yes
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <textarea class="form-control" placeholder="Remarks (if any)" ng-model="CustomerDiligent.Q33BA" rows="2"></textarea>
+                                    </div>
+                                </fieldset>
+                                <fieldset>
+                                    <legend class="legend-content">Politically Exposed Person (PEP)</legend>
+                                    <div class="form-group">
+                                        <label>
+                                            Do you have reasons to believe that the client or BO is a PEP*?
+                                        </label>
+                                        <span class="help-block"><i class="fa fa-warning"></i> Pointer: PEP refers to a person, whether domestic, foreign or international organisation, who is or has been entrusted with prominent public functions, e.g. government ministers, senior civil servants, senior executive of state owned corporations or senior management of international organisations, etc. Use an internet-based search engine, e.g. Google and Yahoo, to obtain news or information if you suspect the client or BO is a PEP.  </span>
+                                        <div class="col-md-12">
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-Q34A" ng-model="CustomerDiligent.Q34A" ng-value="false" />
+                                                    No
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-Q34A" ng-model="CustomerDiligent.Q34A" ng-value="true" />
+                                                    Yes
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <textarea class="form-control" placeholder="Remarks (if any)" ng-model="CustomerDiligent.Q34AA" rows="2"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>
+                                            If the client or BO is a PEP, is the client or BO a foreign PEP, a family member* or close associate* of a foreign PEP?
+                                        </label>
+                                        <span class="help-block"><i class="fa fa-warning"></i> Pointer: A foreign PEP refers to a person who is or has been entrusted with prominent public functions by a foreign country. Family member means a parent, step-parent, child, step-child, adopted child, spouse, sibling, step-sibling and adopted sibling of the PEP. Close associate means an individual who is closely connected to a PEP, either socially or professionally.  </span>
+                                        <div class="col-md-12">
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-Q34B" ng-model="CustomerDiligent.Q34B" ng-value="false" />
+                                                    No
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-Q34B" ng-model="CustomerDiligent.Q34B" ng-value="true" />
+                                                    Yes
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <textarea class="form-control" placeholder="Remarks (if any)" ng-model="CustomerDiligent.Q34BA" rows="2"></textarea>
+                                    </div>
+                                </fieldset>
+                                <fieldset>
+                                    <legend class="legend-content">Higher Risk Areas</legend>
+                                    <div class="form-group">
+                                        <label>
+                                            Is the property transaction complex*, or unusually large*?
+                                        </label>
+                                        <span class="help-block"><i class="fa fa-warning"></i> Pointer: Complex transactions could include attempts to disguise the BO involved in the transaction, or unnecessarily complex transaction structure possibly designed to obscure the true nature of the transaction, or multiple intermediaries used for the transaction. Unusually large transactions could include transaction priced at more than the usual or expected amount for a similar typical transaction.  </span>
+                                        <div class="col-md-12">
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-Q35A" ng-model="CustomerDiligent.Q35A" ng-value="false" />
+                                                    No
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-Q35A" ng-model="CustomerDiligent.Q35A" ng-value="true" />
+                                                    Yes
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <textarea class="form-control" placeholder="Remarks (if any)" ng-model="CustomerDiligent.Q35AA" rows="2"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>
+                                            Does the property transaction have no apparent economic* or lawful purpose*?
+                                        </label>
+                                        <span class="help-block"><i class="fa fa-warning"></i> Pointer: Transactions with no apparent economic or lawful purpose could include using trust and company service providers to set up a number of corporate structures in multiple countries for the transaction without any apparent purpose </span>
+                                        <div class="col-md-12">
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-Q35B" ng-model="CustomerDiligent.Q35B" ng-value="false" />
+                                                    No
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-Q35B" ng-model="CustomerDiligent.Q35B" ng-value="true" />
+                                                    Yes
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <textarea class="form-control" placeholder="Remarks (if any)" ng-model="CustomerDiligent.Q35BA" rows="2"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>
+                                            Is the client or BO from higher risk countries*?
+                                        </label>
+                                        <span class="help-block"><i class="fa fa-warning"></i> Pointer: The links to the list of higher risk countries can be found at the Financial Action Task Force’s (FATF) webpage at this web address: <a href="http://www.fatf-gafi.org/topics/high-riskandnon-cooperativejurisdictions">http://www.fatf-gafi.org/topics/high-riskandnon-cooperativejurisdictions</a>  </span>
+                                        <div class="col-md-12">
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-Q35C" ng-model="CustomerDiligent.Q35C" ng-value="false" />
+                                                    No
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-Q35C" ng-model="CustomerDiligent.Q35C" ng-value="true" />
+                                                    Yes
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <textarea class="form-control" placeholder="Remarks (if any)" ng-model="CustomerDiligent.Q35CA" rows="2"></textarea>
+                                    </div>
+                                </fieldset>
+                                <fieldset>
+                                    <legend class="legend-content">Enhanced CDD</legend>
+                                    <div class="form-group">
+                                        <label>
+                                            If the property transaction is of higher risk, have you conducted enhanced CDD measures by asking the following information from the client or BO, i.e. occupation, source of funds/wealth and purpose of the transaction.
+                                        </label>
+                                        <div class="col-md-12">
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-Q36A" ng-model="CustomerDiligent.Q36A" ng-value="false" />
+                                                    No
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-Q36A" ng-model="CustomerDiligent.Q36A" ng-value="true" />
+                                                    Yes
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <textarea class="form-control" placeholder="Remarks (if any)" ng-model="CustomerDiligent.Q36AA" rows="2"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>
+                                            Have you sought approval from your estate agent to continue with the property transaction?
+                                        </label>
+                                        <div class="col-md-12">
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-Q36B" ng-model="CustomerDiligent.Q36B" ng-value="false" />
+                                                    No
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="radio-Q36B" ng-model="CustomerDiligent.Q36B" ng-value="true" />
+                                                    Yes
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <textarea class="form-control" placeholder="Remarks (if any)" ng-model="CustomerDiligent.Q36BA" rows="2"></textarea>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section id="widget-grid-2" ng-show="IsShowAgentForm">
+        <div class="row">
+            <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-4"
+                     data-widget-colorbutton="false"
+                     data-widget-editbutton="false">
+                    <div>
+                        <div class="widget-body">
+                            <form class="form-horizontal">
+
+                                <fieldset class="m-t-10">
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">Date of Completing Checklist</label>
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control datepicker" date-format ng-model="SalesPersonDeclaration.ChecklistCompletingDate" data-dateformat="dd/mm/yy" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">Date of Submitting to Estate Agent </label>
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control datepicker" date-format ng-model="SalesPersonDeclaration.DateofEstateAgentSubmitting" data-dateformat="dd/mm/yy" required>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <fieldset>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">Tick  (<span class="fa fa-check"></span>) Type of Client/s</label>
+                                        <div class="col-md-10">
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" ng-model="SalesPersonDeclaration.Seller">
+                                                Seller
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" ng-model="SalesPersonDeclaration.Buyer">
+                                                Buyer
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" ng-model="SalesPersonDeclaration.Landloard">
+                                                Landlord
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" ng-model="SalesPersonDeclaration.Tenant">
+                                                Tenant
+                                            </label>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">Name of Salesperson</label>
+                                        <div class="col-md-10">
+                                            <input class="form-control" type="text" ng-model="SalesPersonDeclaration.NameOfSalesPerson" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">Registration of Salesperson</label>
+                                        <div class="col-md-10">
+                                            <input class="form-control" type="text" ng-model="SalesPersonDeclaration.RegistrationOfSalesPerson" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">Name of Estate Agent</label>
+                                        <div class="col-md-10">
+                                            <input class="form-control" type="text" ng-model="SalesPersonDeclaration.NameofEstateAgent" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">Licence of Estate Agent</label>
+                                        <div class="col-md-10">
+                                            <input class="form-control" type="text" ng-model="SalesPersonDeclaration.LicenceofEstateAgent" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">Signature of Salesperson</label>
+                                        <div class="col-md-10">
+                                            <img id="imgSignature">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label"></label>
+                                        <div class="col-md-10">
+                                            <div id="signature-pad" class="signature-pad">
+                                                <div class="signature-pad-body">
+                                                    <canvas style="width:100%; height:150px;"></canvas>
+                                                </div>
+                                                <div class="signature-pad--footer">
+                                                    <div class="description">Sign above</div>
+                                                    <div class="signature-pad--actions">
+                                                        <div>
+                                                            <button type="button" class="btn btn-primary" data-action="clear">Clear</button>
+                                                            <button type="button" class="btn btn-primary" data-action="undo">Undo</button>
+                                                        </div>
+                                                        <div>
+                                                            <button type="button" ng-click="IsImage=true" class="btn btn-success" data-action="save-jpg">Submit Sign</button>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <div ng-show="IsSaved||IsDraft">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="alert alert-success fade in pull-left" id="user-success">
+                                                <i class="fa-fw fa fa-check"></i>
+                                                The CDD report has been saved successfully.
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <fieldset>
+                                    <div class="form-actions">
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+
+                                                <a class="btn btn-success pull-right margin-right-5 header-btn m-b-10 m-t-10" ng-show="!Issubmit" ng-disabled="!IsImage" ng-click="SubmitDocument();Issubmit=true">
+                                                    <i class="fa fa-save"></i>
+                                                    Submit
+                                                </a>
+
+                                                <a class="btn btn-info pull-right header-btn margin-right-5 m-b-10 m-t-10" ng-show="!Issubmit" ng-click="DraftForm()">
+                                                    <i class="fa fa-save"></i>
+                                                    Draft
+                                                </a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <div class="modal" id="createMail" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button class="close" data-dismiss="modal">&times;</button>
+                    <center> <h4 class="modal-title"><b>Send Mail </b></h4> </center>
+                </div>
+                <div class="modal-body">
+                    <form name="frm1" novalidate>
+                        <div class="form-group">
+
+                            <input class="form-control" type="text" name="Item_Name" ng-model="Mail.RecipientAddresses" placeholder="Mail Address" id="input_RecipientAddresses" required />
+
+                        </div>
+                        <div class="form-group">
+
+                            <input class="form-control" type="text" name="RecipientAddresses" ng-model="Mail.CCAddresses" placeholder="CC Address" id="input_RecipientAddresses" required />
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <input class="form-control" type="text" name="input_Subject" ng-model="Mail.Subject" placeholder="Subject" id="input_Subject" required />
+                        </div>
+                        <div class="form-group">
+
+                            <textarea class="form-control" type="text" name="Body" placeholder="Body" ng-model="Mail.Body" id="input_name_createItemprize" required>
+                            </textarea>
+                        </div>
+                        <div class="form-group">
+
+                            <input class="form-control" type="text" name="Signature" placeholder="Signature" ng-model="Mail.Signature" id="input_name_createItemprize" required />
+                        </div>
+                        <div class="alert alert-danger fade in" ng-show="IsSent">
+                            <strong>Error.</strong> Not Sent.
+                            <button class="close" data-dismiss="alert">
+                                ×
+                            </button>
+                            <i class="fa-fw fa fa-warning"></i>
+                        </div>
+                        <div class="alert alert-danger fade in" ng-show="IsNotSent">
+                            <strong>Successful.</strong> Email has been sent.
+                            <button class="close" data-dismiss="alert">
+                                ×
+                            </button>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button class="btn btn-primary" ng-disabled="!frm1.$valid" type="button" ng-click="SendMail(this.Mail)"> Send </button>
+                            <button class="btn btn-primary" type="button" data-dismiss="modal"> Close </button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section>
+        <div id="sec_top" style="display:none">
+            @Html.Partial("~/Content/html/aml_report_top.cshtml")
+        </div>
+        <div id="sec_full" style="display:none">
+            @Html.Partial("~/Content/html/aml_report_full.cshtml")
+        </div>
+    </section>
+    <!-- CheckAML Modal -->
+
+</div>
+
+@section pagespecific{
+
+    <script src="~/Content/js/signature-pad/signature_pad.umd.js"></script>
+        <script src="~/Content/js/signature-pad/signature-app.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.datepicker').datepicker({
+                format: 'dd/MM/yyyy',
+                autoclose: true
+            });
+        })
+    </script>
+}

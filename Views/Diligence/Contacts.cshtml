@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewBag.Title = "Contact List";
+}
+<div id="content" ng-controller="UserController" ng-init="Init('@ViewBag.LoggedUser.AgentId')">
+    <div class="row">
+        <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+            <h1 class="page-title txt-color-blueDark">
+                <i class="fa fa-list fa-fw "></i>
+                Contact List
+            </h1>
+        </div>
+    </div>
+    <!-- widget grid -->
+    <section id="widget-grid" class="">
+        <!-- row -->
+        <div class="row">
+            <!-- NEW WIDGET START -->
+            <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <!-- Widget ID (each widget will need unique ID)-->
+                <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-0"
+                     data-widget-colorbutton="false"
+                     data-widget-editbutton="false">
+                    <div>
+                        <div class="widget-body">
+
+                            <table id="datatable_col_reorder" class="table table-striped table-bordered table-hover" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Company</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Mobile</th>
+                                        <th>Occupation</th>
+                                        <th>Edit</th>
+                                        <th>AML</th>
+                                        <th>Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="ng-cloak" ng-repeat="user in UserCollection" ng-cloak>
+                                        <td>{{user.PreferredName}}</td>
+                                        <td>{{user.companyName}}</td>
+                                        <td>{{user.email}}</td>
+                                        <td>{{user.Phone}}</td>
+                                        <td>{{user.Mobile}}</td>
+                                        <td>{{user.Occupation}}</td>
+                                        <td>
+                                            <a class="btn btn-info btn-outline btn-circle" href="@Url.Action("editcontact")?AgentId={{AgentId}}&&ContactId={{user.UserID}}"> <i class="fa fa-pencil"></i></a>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-info btn-outline btn-circle" href="javascript:void(0)" ng-click="AmlClicked(user.UserID)"> <i class="fa fa-file-text"></i></a>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-danger btn-outline btn-circle" href="" ng-click="DeleteUser(user.UserID)"> <i class="fa fa-times"></i></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- end widget content -->
+
+                    </div>
+                    <!-- end widget div -->
+                </div>
+                <!-- end widget -->
+
+            </article>
+            <!-- WIDGET END -->
+
+        </div>
+        <!-- end row -->
+    </section>
+</div>
+
+@section pagespecific{
+    <!-- CommercePromote quotation create controller -->
+    <script src="~/Content/js/plugin/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Content/js/plugin/datatables/dataTables.colVis.min.js"></script>
+    <script src="~/Content/js/plugin/datatables/dataTables.tableTools.min.js"></script>
+    <script src="~/Content/js/plugin/datatables/dataTables.bootstrap.min.js"></script>
+    <script src="~/Content/js/plugin/datatable-responsive/datatables.responsive.min.js"></script>
+    <script src="~/scripts/commercepromote/controllers/diligent.user.controller.js"></script>
+}
+

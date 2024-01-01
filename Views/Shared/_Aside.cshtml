@@ -1,0 +1,18 @@
+﻿<aside id="left-panel">
+    <nav>
+        <ul>
+            <li class="@Html.RouteIf("index", "active")">
+                <a href="@Url.Action("index", "diligence")" title="Diligence Report"><i class="fa fa-lg fa-file-pdf-o"></i> <span class="menu-item-parent">Annex - A List</span></a>
+            </li>
+            <li class="@Html.RouteIf("list", "active")">
+                <a href="@Url.Action("list", "diligence")" title="Diligence Report"><i class="fa fa-lg fa-file-pdf-o"></i> <span class="menu-item-parent">CDD Check Report</span></a>
+            </li>
+        </ul>
+       
+
+    </nav>
+    <span class="minifyme" data-action="minifyMenu">
+        <i class="fa fa-arrow-circle-left hit"></i>
+    </span>
+
+</aside>

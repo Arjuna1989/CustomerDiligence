@@ -1,0 +1,218 @@
+﻿<div id="content" ng-controller="AnnexSignController" ng-init="Init('@ViewBag.LoggedUser.AgentId','@ViewBag.Id')">
+
+    <div id="loader" class="preloader-area">
+        <div class="spinner-gears"></div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+            <h1 class="page-title txt-color-blueDark">
+                <i class="fa fa-table fa-fw "></i>
+                Annex-A Sign
+            </h1>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
+        <a ng-href="@Url.Content("~/Diligence/Index")" class="btn btn-info pull-left header-btn margin-right-5 m-b-10 m-t-10" data-dismiss="modal"> <i class="fa fa-arrow-circle-left"></i></a>
+    </div>
+
+
+
+    <section id="widget-grid-0" class="">
+        <!-- row -->
+        <div class="row">
+            <!-- NEW WIDGET START -->
+            <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <!-- Widget ID (each widget will need unique ID)-->
+                <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-0" style="border-top: 1px solid #ddd;"
+                     data-widget-colorbutton="false"
+                     data-widget-editbutton="false">
+                    <div>
+                        <div class="widget-body">
+                            <form name="" class="form-horizontal" validate>
+                                <fieldset class="m-t-10" ng-show="Customer.IsIndividual">
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Name </label>
+                                        <div class="col-md-9">
+                                            <input class="form-control" type="text" ng-model="Customer.Name" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Email</label>
+                                        <div class="col-md-9">
+                                            <input class="form-control" type="text" ng-model="Customer.Email" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">NRIC/Passport No </label>
+                                        <div class="col-md-9">
+                                            <input class="form-control" type="text" ng-model="Customer.IdNumber" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Date of Birth  </label>
+                                        <div class="col-md-9">
+                                            <input type="text" date-format class="form-control datepicker" ng-model="Customer.Birthday" data-dateformat="dd/MMM/yyyy" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Nationality </label>
+                                        <div class="col-md-9">
+                                            <input class="form-control" type="text" ng-model="Customer.Nationality" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Occupation</label>
+                                        <div class="col-md-9">
+                                            <input class="form-control" type="text" ng-model="Customer.Occupation" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">
+                                            Name of beneficial owner  <br />
+                                            <small style="font-weight:normal;color:#aaa;">(if individual is not the true owner)</small>
+                                        </label>
+
+                                        <div class="col-md-9">
+                                            <input class="form-control" type="text" ng-model="Customer.Owner" readonly />
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+                                <fieldset ng-show="!Customer.IsIndividual">
+                                    <legend>Customer's Particulars<i> for entities</i></legend>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Name</label>
+                                        <div class="col-md-9">
+                                            <input class="form-control" type="text" ng-model="Customer.Name" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Email</label>
+                                        <div class="col-md-9">
+                                            <input class="form-control" type="text" ng-model="Customer.Email" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Country of Reg</label>
+                                        <div class="col-md-9">
+                                            <input class="form-control" type="text" ng-model="Customer.Nationality" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Reg Number</label>
+                                        <div class="col-md-9">
+                                            <input class="form-control" type="text" ng-model="Customer.IdNumber" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Reg Date</label>
+                                        <div class="col-md-9">
+                                            <input type="text" date-format class="form-control datepicker" ng-model="Customer.Birthday" data-dateformat="dd/MMM/yy" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Busincess Activity</label>
+                                        <div class="col-md-9">
+                                            <input class="form-control" type="text" ng-model="Customer.Occupation" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">
+                                            Name of beneficial owner  <br />
+                                            <small style="font-weight:normal;color:#aaa;">(if individual is not the true owner)</small>
+                                        </label>
+
+                                        <div class="col-md-9">
+                                            <input class="form-control" type="text" ng-model="Customer.Owner" readonly />
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+                                <fieldset>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Date of Completing Form </label>
+                                        <div class="col-md-9">
+                                            <input type="text" date-format class="form-control datepicker" ng-model="Customer.Date" data-dateformat="dd/MMM/yy" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Address of Property in the Transaction </label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control" ng-model="Customer.PropertyAddress" disabled readonly />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Signature</label>
+                                        <div class="col-md-9">
+                                            <img id="imgSignature">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label"></label>
+                                        <div class="col-md-9">
+                                            <div id="signature-pad" class="signature-pad">
+                                                <div class="signature-pad-body">
+                                                    <canvas style="width:100%; height:150px;"></canvas>
+                                                </div>
+                                                <div class="signature-pad--footer">
+                                                    <div class="description">Sign above</div>
+                                                    <div class="signature-pad--actions">
+                                                        <div>
+                                                            <button type="button" class="btn btn-primary" data-action="clear" width="48" height="48">Clear</button>
+                                                            <button type="button" class="btn btn-primary" data-action="undo" width="48" height="48">Undo</button>
+                                                        </div>
+                                                        <div>
+                                                            <button type="button" ng-click="IsSigned=true" class="btn btn-success" data-action="save-jpg" width="48" height="48">Submit Sign</button>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <div class="alert alert-success fade in" ng-show="IsSuccess">
+                                    The document has been submited successfully.
+                                </div>
+                                <div class="form-actions">
+                                    <div class="row">
+                                        <div class="col-md-12" ng-show="!IsSubmitSignAnnex">
+                                            <label><input type="checkbox" ng-model="ischecked" /> I hereby acknowledge that I understand the content of this document and confirmed that I have e-sign the document</label>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <button type="button" ng-disabled="(!IsSigned) || (!ischecked)" ng-show="!IsSubmitSignAnnex" ng-click="Submit();IsSubmitSignAnnex=true" class="btn btn-success pull-right header-btn m-b-10 m-t-10"> Submit Signed Document</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- end widget content -->
+                    </div>
+                    <!-- end widget div -->
+                </div>
+                <!-- end widget -->
+            </article>
+        </div>
+        <!-- end row -->
+
+    </section>
+
+    <section>
+        <div id="sec_annex" style="display:none">
+            @Html.Partial("~/Content/html/aml_annex.cshtml")
+        </div>
+    </section>
+</div>
+@section pagespecific{
+
+    <script src="~/Content/js/signature-pad/signature_pad.umd.js"></script>
+    <script src="~/Content/js/signature-pad/signature-app.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.datepicker').datepicker({
+                format: 'dd/MM/yyyy',
+                autoclose: true
+            });
+        })
+    </script>
+}
